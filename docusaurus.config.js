@@ -9,13 +9,15 @@ const BaseUrl = 'https://sapphirejs.dev';
 const Email = 'contact@sapphirejs.dev';
 const Title = 'Sapphire Framework';
 
-/** @type {import('@docusaurus/types').Config} */
+/** @type {import('@docusaurus/types').DocusaurusConfig} */
 const config = {
 	title: 'Sapphire',
 	url: BaseUrl,
 	baseUrl: '/',
-	onBrokenLinks: 'throw',
-	onBrokenMarkdownLinks: 'throw',
+	// TODO: Re-enable after adding all JSON files. See temporary-errors-log-of-broken-links.md
+	onBrokenLinks: 'warn',
+	// TODO: Re-enable after adding all JSON files. See temporary-errors-log-of-broken-links.md
+	onBrokenMarkdownLinks: 'warn',
 	onDuplicateRoutes: 'throw',
 	favicon: 'img/favicon.ico',
 	tagline: Description,
@@ -49,127 +51,16 @@ const config = {
 			}
 		],
 		[
-			'docusaurus-plugin-typedoc',
-			{
+			'docusaurus-discordjs-docgen',
+			/** @type {import('docusaurus-discordjs-docgen/dist/types').PluginOptions} */ ({
 				id: 'framework',
-				entryPoints: ['./projects/framework/src/index.ts'],
-				tsconfig: './projects/framework/src/tsconfig.json',
-				readme: 'none',
-				out: 'Documentation/api-framework',
-				plugin: ['typedoc-plugin-mdn-links', 'typedoc-plugin-djs-links'],
+				docgenJsonFile: './data/framework.json',
+				out: 'Documentation/sapphire-framework',
 				sidebar: {
 					categoryLabel: '@sapphire/framework',
-					position: 0,
-					fullNames: true
+					position: 0
 				}
-			}
-		],
-		[
-			'docusaurus-plugin-typedoc',
-			{
-				id: 'Pieces',
-				entryPoints: ['./projects/pieces/src/index.ts'],
-				tsconfig: './projects/pieces/src/tsconfig.json',
-				readme: 'none',
-				out: 'Documentation/api-pieces',
-				plugin: ['typedoc-plugin-mdn-links'],
-				sidebar: {
-					categoryLabel: '@sapphire/pieces',
-					position: 1,
-					fullNames: true
-				}
-			}
-		],
-		[
-			'docusaurus-plugin-typedoc',
-			{
-				id: 'Utilities',
-				entryPointStrategy: 'resolve',
-				entryPoints: [
-					'./projects/utilities/packages/async-queue/src/index.ts',
-					'./projects/utilities/packages/decorators/src/index.ts',
-					'./projects/utilities/packages/discord-utilities/src/index.ts',
-					'./projects/utilities/packages/discord.js-utilities/src/index.ts',
-					'./projects/utilities/packages/eslint-config/src/index.ts',
-					'./projects/utilities/packages/event-iterator/src/index.ts',
-					'./projects/utilities/packages/fetch/src/index.ts',
-					'./projects/utilities/packages/phisherman/src/index.ts',
-					'./projects/utilities/packages/prettier-config/src/index.ts',
-					'./projects/utilities/packages/ratelimits/src/index.ts',
-					'./projects/utilities/packages/result/src/index.ts',
-					'./projects/utilities/packages/snowflake/src/index.ts',
-					'./projects/utilities/packages/stopwatch/src/index.ts',
-					'./projects/utilities/packages/time-utilities/src/index.ts',
-					'./projects/utilities/packages/utilities/src/index.ts'
-				],
-				tsconfig: './tsconfig.typedoc.json',
-				readme: 'none',
-				out: 'Documentation/api-utilities',
-				plugin: ['typedoc-plugin-mdn-links', 'typedoc-plugin-djs-links'],
-				sidebar: {
-					categoryLabel: 'Sapphire Utilities',
-					position: 2
-				}
-			}
-		],
-		[
-			'docusaurus-plugin-typedoc',
-			{
-				id: 'Plugins',
-				entryPointStrategy: 'resolve',
-				entryPoints: [
-					'./projects/plugins/packages/api/src/index.ts',
-					'./projects/plugins/packages/editable-commands/src/index.ts',
-					'./projects/plugins/packages/hmr/src/index.ts',
-					'./projects/plugins/packages/i18next/src/index.ts',
-					'./projects/plugins/packages/logger/src/index.ts',
-					'./projects/plugins/packages/pattern-commands/src/index.ts',
-					'./projects/plugins/packages/scheduled-tasks/src/index.ts',
-					'./projects/plugins/packages/subcommands/src/index.ts'
-				],
-				tsconfig: './tsconfig.typedoc.json',
-				readme: 'none',
-				out: 'Documentation/api-plugins',
-				excludeExternals: true,
-				externalPattern: ['node_modules/@types/**'],
-				plugin: ['typedoc-plugin-mdn-links', 'typedoc-plugin-djs-links'],
-				sidebar: {
-					categoryLabel: 'Sapphire Plugins',
-					position: 3
-				}
-			}
-		],
-		[
-			'docusaurus-plugin-typedoc',
-			{
-				id: 'Type',
-				entryPoints: ['./projects/type/src/index.ts'],
-				tsconfig: './projects/type/src/tsconfig.json',
-				readme: './projects/type/README.md',
-				out: 'Documentation/api-type',
-				plugin: ['typedoc-plugin-mdn-links'],
-				sidebar: {
-					categoryLabel: '@sapphire/type',
-					position: 4,
-					fullNames: true
-				}
-			}
-		],
-		[
-			'docusaurus-plugin-typedoc',
-			{
-				id: 'Shapeshift',
-				entryPoints: ['./projects/shapeshift/src/index.ts'],
-				tsconfig: './projects/shapeshift/src/tsconfig.json',
-				readme: './projects/shapeshift/README.md',
-				out: 'Documentation/api-shapeshift',
-				plugin: ['typedoc-plugin-mdn-links'],
-				sidebar: {
-					categoryLabel: '@sapphire/shapeshift',
-					position: 5,
-					fullNames: true
-				}
-			}
+			})
 		]
 	],
 

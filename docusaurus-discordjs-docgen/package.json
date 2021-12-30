@@ -1,0 +1,25 @@
+{
+	"name": "docusaurus-discordjs-docgen",
+	"version": "0.0.1",
+	"description": "A Docusaurus v2 plugin to build API documentation based on @discordjs/ts-docgen output.",
+	"main": "dist/index.js",
+	"files": [
+		"dist/"
+	],
+	"scripts": {
+		"build": "tsc",
+		"watch": "tsc -w",
+		"debug": "node --inspect scripts/debug.mjs"
+	},
+	"dependencies": {
+		"@sapphire/docusaurus-plugin-ts2esm2cjs": "^1.0.3",
+		"@sapphire/result": "^1.1.1",
+		"@sapphire/utilities": "^3.6.2",
+		"common-tags": "^1.8.2",
+		"css": "^3.0.0"
+	},
+	"devDependencies": {
+		"@docusaurus/types": "2.0.0-beta.18",
+		"@types/common-tags": "^1.8.1"
+	}
+}
